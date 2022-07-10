@@ -1,4 +1,10 @@
- string shortestCommonSupersequence(string str1, string str2) {
+//1. if character exists in both add to string.
+//2. if not check dp[i][j-1] >dp[i-1][j] which means the str which represents column its jth is not common so push that but dont push row as chances are it can still exist.
+//3. Do opposite in else.
+//4. once out of while loop check if i or j is greater and insert them into string.
+
+
+string shortestCommonSupersequence(string str1, string str2) {
         int m=str1.size();
         int n=str2.size();
           int dp[m+1][n+1];
