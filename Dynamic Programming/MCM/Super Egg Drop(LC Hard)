@@ -1,0 +1,33 @@
+ int memo[101][10001];
+    int superEggDrop(int k, int n) {
+        memset(memo,-1,sizeof(memo));
+        return helper(k,n);
+    }
+      int helper(int K, int N) {
+        if (N <= 1) {
+            return N;
+        }
+        if (K == 1) {
+            return N;
+        }
+        if (memo[K][N] > 0) {
+            return memo[K][N];
+        }
+        
+        int low = 1, high = N, result = N;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
+            int left = helper(K - 1, mid - 1);
+            int right = helper(K, N - mid);
+            result = min(result,max(left, right) + 1);
+            if (left == right) {
+                break;
+            } else if (left < right) {
+                low = mid + 1;
+            } else {
+                high = mid;
+            }
+        }
+        memo[K][N] = result;
+        return result;
+    }
