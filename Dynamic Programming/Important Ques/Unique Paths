@@ -1,0 +1,23 @@
+  int t[101][101];
+    int uniquePaths(int m, int n) {
+        
+        memset(t,-1,sizeof(t));
+        int ans = f(m-1,n-1);
+        return ans;
+    }
+    int f(int m,int n){
+        if(m==0 || n==0){
+            return 1;
+        }
+        if(m<0 || n<0)
+            return 0;
+       
+        
+        if(t[m][n]!=-1){
+            return t[m][n];
+        }
+        
+       int up=f(m-1,n);
+        int left=f(m,n-1);
+        return t[m][n]=up+left;
+    }
