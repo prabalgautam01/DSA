@@ -1,0 +1,32 @@
+  int findDuplicate(vector<int>& nums) {
+         int n=nums.size();
+        int i=0;
+        while(i<n)
+        { 
+            if(nums[i]!=i+1)
+            { 
+                
+                int correct=nums[i]-1;
+                if(nums[i]!=nums[correct]){
+                swap(nums,i,correct);
+            }
+                else
+                    return nums[i];
+            }
+            
+            else{
+                i++;}
+        }
+      /*  for(int i=1;i<nums.size();i++){
+            if(nums[i] == nums[i-1])
+            {
+                return nums[i];
+            }
+        }*/
+        return -1;
+    }
+    void swap(vector<int>& nums,int a,int b){
+        int temp=nums[a];
+        nums[a]=nums[b];
+        nums[b]=temp;
+    }
