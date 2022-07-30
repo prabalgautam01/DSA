@@ -1,0 +1,35 @@
+ string longestPalin (string S) {
+        // code here
+        int n=S.length();
+        int start=0;
+        int end=0;
+        int l,h;
+        
+        for(int i=1;i<n;i++){
+            //Even string
+             l=i-1;
+             h=i;
+            while(l>=0 && h<n && S[l]==S[h]){
+                if((end-start)<(h-l)){
+                    start=l;
+                    end=h;
+                }
+                l--;
+                h++;
+            }
+            //odd string
+             l=i-1;
+             h=i+1;
+            while(l>=0 && h<n && S[l]==S[h]){
+                 if((end-start)<(h-l)){
+                    start=l;
+                    end=h;
+                }
+                l--;
+                h++;
+            }
+            
+        }
+        return S.substr(start,end-start+1);
+        
+    }
