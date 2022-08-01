@@ -20,4 +20,16 @@
        int up=f(m-1,n);
         int left=f(m,n-1);
         return t[m][n]=up+left;
+        
+        
+        
+        //Faster and optimized solution using permutations
+        //tc-O(m-1)or O(n-1)
+        int N=n+m-2;
+        int r=m-1;
+        double res=1;
+        for(int i=1;i<=r;i++){
+             res=res*(N-r+i)/i;
+        }
+        return res;
     }
